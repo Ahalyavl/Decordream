@@ -1,0 +1,45 @@
+{% include 'admin_header.html' %}
+<div style="margin-bottom: 1em;background:url('/static/assets/img/cons.jpg') ; height: 300px; width: 100%; background-size: cover; background-position: center;"  >
+  </div>
+
+
+
+
+<center>
+<form method="post">
+	<h3>Contractor Details</h3>
+	<table class="table table-hover" style="width: 800px;">
+		<tr>
+			<th>Index</th>
+			<th>Contractor Name</th>
+			<th>Place</th>
+			<th>Phone</th>
+			<th>Email</th>
+			<th>AAdhar No</th>
+		</tr>
+		{% for i in data['view'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{i['fname']}} {{i['lname']}}</td>
+			<td>{{i['place']}}</td>
+			<td>{{i['phone']}}</td>
+			<td>{{i['email']}}</td>
+			<td>{{i['aadhar']}}</td>
+			{% if i ['usertype']=='pending' %}
+			<td><a href="?action=accept&con_id={{i['contractor_id']}}&log_id={{i['login_id']}}" class="btn btn-info">Accept</a></td>
+			<td><a href="?action=reject&con_id={{i['contractor_id']}}&log_id={{i['login_id']}}" class="btn btn-danger">Remove</a></td>
+
+			{% elif i ['usertype']=='contractor' %}
+			<td><a href="admin_view_con_design?con_id={{i['contractor_id']}}&log_id={{i['login_id']}}" class="btn btn-info">Image And Design</a></td>
+
+			{% endif %}
+		</tr>
+		{% endfor %}
+
+	
+	</table>
+	
+</form>
+</center>
+{% include 'footer.html' %}
+

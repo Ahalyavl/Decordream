@@ -1,0 +1,30 @@
+{% include 'admin_header.html' %}
+<div style="margin-bottom: 1em;background:url('/static/assets/img/inter.jpg') ; height: 300px; width: 100%; background-size: cover;" >
+  </div>
+<center>
+<form method="post">
+	<table class="table table-hover" style="width: 850px;">
+		<tr>
+			<th>Contractor</th>
+			<th>Material</th>
+			<th>Place</th>
+			<th>Phone</th>
+			<th></th><th></th><th></th>
+		</tr>
+		{% for i in data['view'] %}
+		<tr>
+			<td>{{i['fname']}} {{i['lname']}}</td>
+			<td>{{i['raw_name']}}</td>
+			<td>{{i['place']}}</td>
+			<td>{{i['phone']}}</td>
+			<td><a href="admin_view_requst_customer?rreq_id={{i['rrequest_id']}}" class="btn btn-info">Customer</a></td>
+			<!-- {% if i['rr_status']=='pending' %}
+			<td><a href="?action=accept&rreq_id={{i['rrequest_id']}}" class="btn btn-info">Accept</a></td>
+			<td><a href="?action=reject&rreq_id={{i['rrequest_id']}}" class="btn btn-danger">Reject</a></td>
+			{% endif %} -->
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+</center>
+{% include 'footer.html' %}

@@ -1,0 +1,24 @@
+{% include 'admin_header.html' %}
+<div style="margin-bottom: 1em;background:url('/static/assets/img/inter.jpg') ; height: 300px; width: 100%; background-size: cover;" >
+  </div>
+<form method="post">
+	<table class="table table-hover" style="width: 800px;">
+		<tr>
+			<th>Index</th>
+			<th>Design Name</th>
+			<th>Design Details</th>
+			<th>Design Image</th>
+		</tr>
+		{% for i in data['view'] %}
+		<tr>
+			
+		
+		<td>{{loopindex}}</td>
+		<td>{{i['designname']}}</td>
+		<td>{{i['details']}}</td>
+		<td><a href="/{{i['path']}}"><img src="/{{i['path']}}" width="100" height="100" alt="Designer Image"></a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</form>
+{% include 'footer.html' %}
