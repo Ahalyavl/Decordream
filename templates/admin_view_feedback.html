@@ -1,0 +1,25 @@
+{% include 'admin_header.html' %}
+<div style="margin-bottom: 1em;background:url('/static/assets/img/inter.jpg') ; height: 300px; width: 100%; background-size: cover;" >
+  </div>
+<center>
+	<form method="post">
+		<h3>Customer Feedback</h3>
+		<table class="table table-hover" style="width: 710px;">
+			<tr>
+				<th>Index</th>
+				<th>Customer Name</th>
+				<th>Feed Back</th>
+				<th>Feed Back Date</th>
+			</tr>
+			{% for i in data['view'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{i['fname']}} {{i['lname']}}</td>
+				<td>{{i['feedback']}}</td>
+				<td>{{i['feed_date']}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</form>
+</center>
+{% include 'footer.html' %}
